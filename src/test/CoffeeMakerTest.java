@@ -2,18 +2,22 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+/**
+ * @author nurca
+ * CoffeeMakerTest class'ın içinde malzeme eksiltmesini kontrol eden testler yazıldı.
+ **/
 public class CoffeeMakerTest {
 
     private CoffeeMaker coffeeMaker;
 
-    //her testten önce bu metotu çağırır.
-    @BeforeEach
+
+    @BeforeEach //Her testten önce bu metotu çağırır.
     public void setup(){
         coffeeMaker = new CoffeeMaker();
     }
 
     public void mochaResourceTest(){
+        //Mocha yapıldıktan sonra malzeme eksiltmesini doğru yapıp yapılmadığını kontrol eden test.
         coffeeMaker.espresso = 10;
         coffeeMaker.milkFoam = 10;
         coffeeMaker.hotChocolate =10;
@@ -30,6 +34,7 @@ public class CoffeeMakerTest {
 
     @Test
     public void cappuccinoResourceTest(){
+        //Cappuccino yapıldıktan sonra malzeme eksiltmesini doğru yapıp yapılmadığını kontrol eden test.
         coffeeMaker.espresso = 10;
         coffeeMaker.milkFoam = 10;
         coffeeMaker.steamedMilk =10;
@@ -44,6 +49,7 @@ public class CoffeeMakerTest {
 
     @Test
     public void caffeLatteResourceTest(){
+        //CaffeLatte yapıldıktan sonra malzeme eksiltmesini doğru yapıp yapılmadığını kontrol eden test.
         coffeeMaker.espresso = 10;
         coffeeMaker.milkFoam = 10;
         coffeeMaker.steamedMilk =10;
@@ -58,6 +64,7 @@ public class CoffeeMakerTest {
 
     @Test
     public void espressoResourceTest(){
+        //Espresso yapıldıktan sonra malzeme eksiltmesini doğru yapıp yapılmadığını kontrol eden test.
         coffeeMaker.espresso = 10;
 
         coffeeMaker.goToSelection(1);
@@ -68,6 +75,7 @@ public class CoffeeMakerTest {
 
     @Test
     public void doubleEspressoResourceTest(){
+        //Double Espresoo yapıldıktan sonra malzeme eksiltmesini doğru yapıp yapılmadığını kontrol eden test.
         coffeeMaker.espresso = 10;
 
         coffeeMaker.goToSelection(2);
@@ -78,6 +86,7 @@ public class CoffeeMakerTest {
 
     @Test
     public void hotWaterResourceTest(){
+        //Hot Water yapıldıktan sonra malzeme eksiltmesini doğru yapıp yapılmadığını kontrol eden test.
         coffeeMaker.hotWater = 10;
 
         coffeeMaker.goToSelection(7);
@@ -88,6 +97,7 @@ public class CoffeeMakerTest {
 
     @Test
     public void americanoResourceTest(){
+        //Americano yapıldıktan sonra malzeme eksiltmesini doğru yapıp yapılmadığını kontrol eden test.
         coffeeMaker.hotWater = 10;
         coffeeMaker.espresso = 10;
 

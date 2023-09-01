@@ -11,11 +11,14 @@ public class CoffeeMaker {
     static int hotChocolate = 100;
 
 
-    //Kahvenin çeşidine göre kullanılması gereken malzemelerin adı ve miktarı
+    //Kahvenin çeşidine göre kullanılması gereken malzemelerin ismi ve miktarı
+
     //espresso için değişkenler.
     static int usedEspresso = 1;
+
     //double espresso için değişkenler.
     static int usedDoubleEspresso = 2;
+
     //cappuccino için değişkenler.
     static int cappuccinoEspresso = 1;
     static int cappuccinoSteamedMilk =2;
@@ -40,12 +43,13 @@ public class CoffeeMaker {
     static int usedHotWater = 5;
 
 
-    public void start() {
+    public void start() { //main classtan çağırılan ve tüm işlemleri başlatan metot.
 
-        int choice; //müşterinin verdiği input choice değişkenin içine atıldı.
+        int choice; //Kullanıcının verdiği girdi choice değişkenin içine atıldı.
         Scanner scanner = new Scanner(System.in);
 
         do {
+            //Geçerli aralıkta girdi olduğu sürece kullanıcıya menüyü gösterir ve seçilen işlemleri gerçekleştir.
             displayMenu();
             choice = scanner.nextInt();
             goToSelection(choice);
@@ -54,21 +58,27 @@ public class CoffeeMaker {
 
     }
 
+
     private static void makeEspresso(){
-        EspressoIng e = new EspressoIng("espressoIng",usedEspresso);
-        espresso -= usedEspresso;
+
+        EspressoIng e = new EspressoIng("espressoIng",usedEspresso); //Gerekli malzemelerden obje üretildi.
+        espresso -= usedEspresso; //Kullanılan malzemelerin azaltma işlemi yapıldı.
+
         Prepare espresso=new Espresso();
         List<Ingredients> ingredientsList=new ArrayList<>();
 
-        ingredientsList.add(e);
+        ingredientsList.add(e);//Üretilen objeler bir array list'e eklendi.
 
-        espresso.makeCoffee(ingredientsList);
+        espresso.makeCoffee(ingredientsList); //içerikleri parametre olarak alan ve kahvenin yapılmasını sağlayan metot  çağrıldı.
 
     }
     private static void makeCappuccino() {
+        //Gerekli malzemelerden obje üretildi.
         Ingredients m = new MilkFoam("milkFoam", cappuccinoMilkFoam);
         Ingredients e = new EspressoIng("espressoIng",cappuccinoEspresso);
         Ingredients s = new SteamedMilk("steamedMilk",caffelatteSteamedMilk);
+
+        //Kullanılan malzemelerin azaltma işlemi yapıldı.
         milkFoam -= cappuccinoMilkFoam;
         espresso -= cappuccinoEspresso;
         steamedMilk -= cappuccinoSteamedMilk;
@@ -76,36 +86,46 @@ public class CoffeeMaker {
         Prepare cappuccino=new Cappuccino ();
         List<Ingredients> ingredientsList=new ArrayList<>();
 
+        //Üretilen objeler bir array list'e eklendi.
         ingredientsList.add(e);
         ingredientsList.add(s);
         ingredientsList.add(m);
 
-        cappuccino.makeCoffee(ingredientsList);
+        cappuccino.makeCoffee(ingredientsList); //içerikleri parametre olarak alan ve kahvenin yapılmasını sağlayan metot  çağrıldı.
 
     }
     private static void makeCaffeLatte() {
+
+        //Gerekli malzemelerden obje üretildi.
         MilkFoam m = new MilkFoam("milkFoam", caffelatteMilkFoam);
         EspressoIng e = new EspressoIng("espressoIng",caffelatteEspresso);
         SteamedMilk s = new SteamedMilk("steamedMilk",caffelatteSteamedMilk);
+
+        //Kullanılan malzemelerin azaltma işlemi yapıldı.
         milkFoam -= caffelatteMilkFoam;
         espresso -= caffelatteEspresso;
         steamedMilk -= caffelatteSteamedMilk;
 
 
         Prepare caffeLatte=new CaffeLatte();
-        List<Ingredients> ingredientsList=new ArrayList<>(); //--
+        List<Ingredients> ingredientsList=new ArrayList<>();
 
+        //Üretilen objeler bir array list'e eklendi.
         ingredientsList.add(e);
         ingredientsList.add(m);
         ingredientsList.add(s);
 
-        caffeLatte.makeCoffee(ingredientsList);
+        caffeLatte.makeCoffee(ingredientsList); //içerikleri parametre olarak alan ve kahvenin yapılmasını sağlayan metot  çağrıldı.
     }
     protected static void makeMocha() {
+
+        //Gerekli malzemelerden obje üretildi.
         MilkFoam m = new MilkFoam("milkFoam", mochaMilkFoam);
         SteamedMilk s = new SteamedMilk("steamedMilk", mochaSteamedMilk);
         EspressoIng e = new EspressoIng("espressoIng",mochaEspresso);
         HotChocolate h = new HotChocolate("hotChocolate",mochaHotChocolate);
+
+        //Kullanılan malzemelerin azaltma işlemi yapıldı.
         milkFoam -= mochaMilkFoam;
         steamedMilk -= mochaSteamedMilk;
         espresso -= mochaEspresso;
@@ -114,54 +134,62 @@ public class CoffeeMaker {
         Prepare mocha=new Mocha();
         List<Ingredients> ingredientsList=new ArrayList<>();
 
+        //Üretilen objeler bir array list'e eklendi.
         ingredientsList.add(m);
         ingredientsList.add(s);
         ingredientsList.add(e);
         ingredientsList.add(h);
 
-        mocha.makeCoffee(ingredientsList);
+        mocha.makeCoffee(ingredientsList); //içerikleri parametre olarak alan ve kahvenin yapılmasını sağlayan metot  çağrıldı.
     }
     private static void makeHotWater() {
-        HotWaterIng w = new HotWaterIng("hotWaterIng",usedHotWater);
-        hotWater -= usedHotWater ;
+        HotWaterIng w = new HotWaterIng("hotWaterIng",usedHotWater); //Gerekli malzemelerden obje üretildi.
+        hotWater -= usedHotWater ; //Kullanılan malzemelerin azaltma işlemi yapıldı.
 
         Prepare hotWater=new HotWater();
         List<Ingredients> ingredientsList=new ArrayList<>();
 
-        ingredientsList.add(w);
+        ingredientsList.add(w);//Üretilen objeler bir array list'e eklendi.
 
-        hotWater.makeCoffee(ingredientsList);
+        hotWater.makeCoffee(ingredientsList); //içerikleri parametre olarak alan ve kahvenin yapılmasını sağlayan metot  çağrıldı.
     }
     private static void makeAmericano() {
+
+        //Gerekli malzemelerden object üretildi.
         EspressoIng e = new EspressoIng("espressoIng",americanoEspresso);
         HotWaterIng w = new HotWaterIng("hotWaterIng",americanoHotWater);
+
+        //Kullanılan malzemelerin azaltma işlemi yapıldı.
         hotWater -= americanoHotWater;
         espresso -= americanoEspresso;
 
         Prepare americano=new Americano();
         List<Ingredients> ingredientsList=new ArrayList<>();
 
+        //Üretilen objeler bir array list'e eklendi.
         ingredientsList.add(e);
         ingredientsList.add(w);
 
-        americano.makeCoffee(ingredientsList);
+        americano.makeCoffee(ingredientsList); //içerikleri parametre olarak alan ve kahvenin yapılmasını sağlayan metot  çağrıldı.
 
     }
     private static void makeDoubleEspresso() {
-        EspressoIng e = new EspressoIng("espressoIng",usedDoubleEspresso);
+        EspressoIng e = new EspressoIng("espressoIng",usedDoubleEspresso); //Gerekli malzemelerden obje üretildi.
+
+        //Kullanılan malzemelerin azaltma işlemi yapıldı.
         espresso -= usedDoubleEspresso;
 
         Prepare doubleEspresso=new DoubleEspresso();
         List<Ingredients> ingredientsList=new ArrayList<>();
 
-        ingredientsList.add(e);
+        ingredientsList.add(e);//Üretilen objeler bir array list'e eklendi.
 
-        doubleEspresso.makeCoffee(ingredientsList);
+        doubleEspresso.makeCoffee(ingredientsList); //içerikleri parametre olarak alan ve kahvenin yapılmasını sağlayan metot  çağrıldı.
 
     }
 
 
-    private void displayMenu(){
+    private void displayMenu(){ //Menüyü gösteren metot.
 
         System.out.println("-----MENU----");
         System.out.println("1. Espresso  (20 ₺)");
@@ -240,22 +268,27 @@ public class CoffeeMaker {
         }
     }
     public int getEspressoResource(){
+
         return espresso;
     }
 
     public int getSteamedMilkResource(){
+
         return steamedMilk;
     }
 
     public int getHotWaterResource(){
+
         return hotWater;
     }
 
     public int getMilkFoamResource(){
+
         return milkFoam;
     }
 
     public int getHotChocolateResource(){
+
         return hotChocolate;
     }
 }

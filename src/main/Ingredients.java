@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/** @author nurca
+ * Malzemelerin isim ve miktarını alan constructorlar yazıldı
+ */
 public class Ingredients {
-
     private String name;
     private int amount;
 
